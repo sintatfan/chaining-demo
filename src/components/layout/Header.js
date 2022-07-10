@@ -3,10 +3,11 @@ import HeaderGuest from "./HeaderGuest";
 import HeaderUser from "./HeaderUser";
 import {logoDark} from "../../theme";
 import {Link} from "react-router-dom";
+import {useAuthValue} from "../../auth";
 
 function HeaderProfile() {
-    // TODO: consider auth state
-    const isUser = false;
+    const {currentUser} = useAuthValue();
+    const isUser = !!currentUser;
     return isUser ? (<HeaderUser />) : (<HeaderGuest />);
 }
 

@@ -1,4 +1,4 @@
-import {Box, Button, Group, Stack, Text, Textarea} from "@mantine/core";
+import {Box, Button, Group, Stack, Textarea} from "@mantine/core";
 import GlobalTimer from "../GlobalTimer";
 import {useAuthValue} from "../../auth";
 

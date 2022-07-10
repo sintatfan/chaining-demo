@@ -1,4 +1,4 @@
-import {Box, Button, Card, Group, Popover, Skeleton, Stack, Switch, Text, Title, UnstyledButton} from "@mantine/core";
+import {Box, Button, Card, Group, Popover, Skeleton, Stack, Switch, Title, UnstyledButton} from "@mantine/core";
 import CodeEditor from "./CodeEditor";
 import {Eye, PlayerPlay} from "tabler-icons-react";
 import {useState} from "react";

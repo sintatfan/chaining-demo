@@ -1,4 +1,4 @@
-import {Box, Button, Grid, Group, Stack, Textarea} from "@mantine/core";
+import {Box, Button, Group, Stack, Textarea} from "@mantine/core";
 import GlobalTimer from "../GlobalTimer";
 
 export default function EditorResultCol() {

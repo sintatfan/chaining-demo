@@ -12,3 +12,10 @@
 .login-dialog {
   text-align: center;
 }
+
+.editor-page__grid {
+  height: 100%;
+}
+.editor-page__grid-inner {
+  height: 100%;
+}

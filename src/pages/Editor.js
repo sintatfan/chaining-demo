@@ -1,26 +1,20 @@
-import Editor, {useMonaco} from "@monaco-editor/react";
-import {useEffect} from "react";
-import raw from "raw.macro";
-import {Title} from "@mantine/core";
+import {Grid} from "@mantine/core";
+import EditorSidebarCol from "../components/editor/EditorSidebarCol";
+import EditorMainCol from "../components/editor/EditorMainCol";
+import EditorResultCol from "../components/editor/EditorResultCol";
 
 export default function EditorPage() {
-    const monaco = useMonaco();
-    useEffect(() => {
-        // Load p5 type definitions with raw macro
-        const p5types = raw("@types/p5/global.d.ts");
-
-        // Add p5 as an external library of Monaco
-        monaco?.languages.typescript.javascriptDefaults.addExtraLib(
-            p5types,
-            'node_modules/@types/p5/global.d.ts'
-        );
-    });
-
     return (
-        <div>
-            <Title>Drag to Code</Title>
-            <Editor height="500px" theme="vs-dark"
-                    defaultLanguage="javascript" defaultValue="console.log('hello world');" />
-        </div>
+        <Grid className="editor-page__grid" gutter="sm">
+            <Grid.Col span={2}>
+                <EditorSidebarCol />
+            </Grid.Col>
+            <Grid.Col span={5}>
+                <EditorMainCol />
+            </Grid.Col>
+            <Grid.Col span={5}>
+                <EditorResultCol />
+            </Grid.Col>
+        </Grid>
     );
 }

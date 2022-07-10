@@ -48,9 +48,25 @@
   left: 100%;
   top: 50%;
   display: block;
-  border: 1px solid #ffffff;
   width: 16px;
+  height: 2px;
+  background: #ffffff;
 }
 .history-chain-point:last-child span::after {
   display: none;
+}
+
+.editor-ref-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.editor-ref-list {
+
+}
+.editor-ref-item {
+  cursor: move;
+}
+.editor-ref-item img {
+  pointer-events: none;
 }

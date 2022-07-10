@@ -1,5 +1,5 @@
-import {Avatar, Group, Menu, Stack, UnstyledButton} from "@mantine/core";
-import {CaretDown, Logout, User} from "tabler-icons-react";
+import {Avatar, Box, Group, Menu, ThemeIcon, Title, UnstyledButton} from "@mantine/core";
+import {CaretDown, CirclePlus, Logout, User} from "tabler-icons-react";
 import {forwardRef} from "react";
 
 const MenuActivator = forwardRef(({ image, name, email, icon, ...others }, ref) => {
@@ -23,10 +23,24 @@ function UserAvatar() {
     );
 }
 
+function UserProgress() {
+    return (
+        <Box>
+            <Title order={5}>Chances</Title>
+            <Group spacing="xs">
+                <ThemeIcon><CirclePlus size={16} /></ThemeIcon>
+                <ThemeIcon color="gray"><CirclePlus size={16} /></ThemeIcon>
+                <ThemeIcon color="gray"><CirclePlus size={16} /></ThemeIcon>
+            </Group>
+        </Box>
+    );
+}
+
 export default function HeaderUser() {
     return (
-        <Stack>
+        <Group spacing="xl">
+            <UserProgress />
             <UserAvatar />
-        </Stack>
+        </Group>
     );
 }

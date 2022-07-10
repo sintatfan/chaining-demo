@@ -12,10 +12,10 @@ function HeaderProfile() {
 
 export default function AppHeader() {
     return (
-        <Header height={88} className="app-header">
+        <Header height={72} className="app-header">
             <Container fluid className="app-header-container">
                 <Link to="/">
-                    <img src={logoDark} alt="Logo" />
+                    <img src={logoDark} alt="Logo" height={46} />
                 </Link>
                 <HeaderProfile />
             </Container>

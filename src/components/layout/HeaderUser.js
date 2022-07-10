@@ -6,7 +6,7 @@ const MenuActivator = forwardRef(({ image, name, email, icon, ...others }, ref) 
     return (
         <UnstyledButton ref={ref} {...others}>
             <Group spacing="xs">
-                <Avatar src={null} color="red" size={48} radius="xl">A</Avatar>
+                <Avatar src={null} color="red" size={46} radius="xl">A</Avatar>
                 <CaretDown size={16} />
             </Group>
         </UnstyledButton>

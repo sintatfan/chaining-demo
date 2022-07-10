@@ -6,7 +6,7 @@ const MenuActivator = forwardRef(({ image, name, email, icon, ...others }, ref) 
     return (
         <UnstyledButton ref={ref} {...others}>
             <Group spacing="xs">
-                <Avatar src={null} color="red" radius="xl">A</Avatar>
+                <Avatar src={null} color="red" size={48} radius="xl">A</Avatar>
                 <CaretDown size={16} />
             </Group>
         </UnstyledButton>
@@ -26,7 +26,7 @@ function UserAvatar() {
 function UserProgress() {
     return (
         <Box>
-            <Title order={5}>Chances</Title>
+            <Title order={6}>Chances</Title>
             <Group spacing="xs">
                 <ThemeIcon><CirclePlus size={16} /></ThemeIcon>
                 <ThemeIcon color="gray"><CirclePlus size={16} /></ThemeIcon>

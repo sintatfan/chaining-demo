@@ -11,6 +11,7 @@ import './firebase';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+      {/* React Router Configuration */}
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<App />}>

@@ -1,5 +1,9 @@
 import { initializeApp } from 'firebase/app'
-import {getAuth, GoogleAuthProvider, GithubAuthProvider, signInWithPopup, signInWithEmailAndPassword} from 'firebase/auth'
+import {
+    getAuth, GoogleAuthProvider, GithubAuthProvider,
+    signInWithPopup, signInWithEmailAndPassword,
+    signOut
+} from 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBMY75i-1vaxBxHaVR5dPlUwI0U_Bt9iV4",
@@ -17,13 +21,14 @@ const errorMap = {
     'auth/user-not-found': 'Invalid login credentials',
     'auth/wrong-password': 'Invalid login credentials',
     'auth/popup-closed-by-user': 'You have cancelled the operation',
+    'auth/account-exists-with-different-credential': 'Your email address is already associated with an account. Try to sign in with another provider.',
 }
 
 // Initialize Firebase and Firebase Authentication
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-function extractUserInfo(user) {
+export function extractUserInfo(user) {
     return {
         uid: user.uid,
         name: user.displayName,
@@ -64,6 +69,10 @@ export async function passwordSignIn(email, password) {
         }
         throw e.message;
     }
+}
+
+export async function logout() {
+    await signOut(auth);
 }
 
 export { app, auth };

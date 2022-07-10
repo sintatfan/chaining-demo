@@ -7,27 +7,29 @@ import {NotificationsProvider} from "@mantine/notifications";
 import {AuthProvider} from "./auth";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from 'firebase/auth';
-import {auth} from "./firebase";
+import {auth, extractUserInfo} from "./firebase";
 
 function App() {
+    // User auth state
     const [currentUser, setCurrentUser] = useState(null);
     useEffect(() => {
+        // Update user state when Firebase Auth state is changed
         onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user)
+            setCurrentUser(user ? extractUserInfo(user) : null);
         })
     }, [])
 
   return (
-      <AuthProvider value={{currentUser}}>
-          <MantineProvider theme={theme} styles={themeStyles} withNormalizeCSS withGlobalStyles>
-              <Global styles={globalStyles} />
-              <NotificationsProvider position="top-right">
+      <MantineProvider theme={theme} styles={themeStyles} withNormalizeCSS withGlobalStyles>
+          <Global styles={globalStyles} />
+          <NotificationsProvider position="top-right">
+                <AuthProvider value={{currentUser}}>
                   <AppShell header={<AppHeader />} styles={appStyles} fixed>
                       <Outlet />
                   </AppShell>
-              </NotificationsProvider>
-          </MantineProvider>
-      </AuthProvider>
+                </AuthProvider>
+          </NotificationsProvider>
+      </MantineProvider>
   );
 }
 

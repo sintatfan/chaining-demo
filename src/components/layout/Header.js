@@ -8,7 +8,7 @@ import {useAuthValue} from "../../auth";
 function HeaderProfile() {
     const {currentUser} = useAuthValue();
     const isUser = !!currentUser;
-    return isUser ? (<HeaderUser />) : (<HeaderGuest />);
+    return isUser ? (<HeaderUser user={currentUser} />) : (<HeaderGuest />);
 }
 
 export default function AppHeader() {

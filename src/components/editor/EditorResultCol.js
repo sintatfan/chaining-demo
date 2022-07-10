@@ -1,7 +1,10 @@
-import {Box, Button, Group, Stack, Textarea} from "@mantine/core";
+import {Box, Button, Group, Stack, Text, Textarea} from "@mantine/core";
 import GlobalTimer from "../GlobalTimer";
+import {useAuthValue} from "../../auth";
 
 export default function EditorResultCol() {
+    const {currentUser} = useAuthValue();
+
     return (
         <Stack className="editor-page__grid-inner">
             <Box className="editor-preview-container">
@@ -11,7 +14,7 @@ export default function EditorResultCol() {
                 <Box style={{flex: 1, maxWidth: 500}}>
                     <Textarea placeholder="Describe your work" variant="filled" minRows={4} mb="xs" />
                     <Group position="right">
-                        <Button>Submit</Button>
+                        <Button disabled={!currentUser}>Submit</Button>
                     </Group>
                 </Box>
                 <Box>

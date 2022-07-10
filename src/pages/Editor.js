@@ -1,6 +1,7 @@
 import Editor, {useMonaco} from "@monaco-editor/react";
 import {useEffect} from "react";
 import raw from "raw.macro";
+import {Title} from "@mantine/core";
 
 export default function EditorPage() {
     const monaco = useMonaco();
@@ -17,7 +18,7 @@ export default function EditorPage() {
 
     return (
         <div>
-            Editor Page
+            <Title>Drag to Code</Title>
             <Editor height="500px" theme="vs-dark"
                     defaultLanguage="javascript" defaultValue="console.log('hello world');" />
         </div>

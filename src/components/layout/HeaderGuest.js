@@ -1,6 +1,6 @@
 import {Box, Button, Divider, MantineProvider, Modal, PasswordInput, Text, TextInput} from "@mantine/core";
 import {useState} from "react";
-import {lightTheme, logoLight} from "../../theme";
+import {lightTheme, logoLight, themeStyles} from "../../theme";
 import {useForm, zodResolver} from "@mantine/form";
 import { z } from 'zod';
 
@@ -35,7 +35,7 @@ function SignInForm() {
 
             <Text size="sm">
                 Don't have an account?
-                <Button variant="subtle">Sign Up Now</Button>
+                <Text variant="link" size="sm" ml="xs" component="a" href="#">Sign Up Now</Text>
             </Text>
         </form>
     );
@@ -64,7 +64,7 @@ export default function HeaderGuest() {
 
     return (
         <>
-            <MantineProvider theme={lightTheme}>
+            <MantineProvider theme={lightTheme} styles={themeStyles}>
                 <Modal opened={opened} onClose={() => setOpened(false)} radius={10}>
                     <LoginModalBody />
                 </Modal>

@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 
 function HeaderProfile() {
     // TODO: consider auth state
-    const isUser = false;
+    const isUser = true;
     return isUser ? (<HeaderUser />) : (<HeaderGuest />);
 }
 

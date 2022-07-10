@@ -5,6 +5,7 @@ import logoWhite from './images/logo.svg';
 import logoFilled from './images/logo_filled.svg';
 
 const headingFontFamily = 'QueenofCamelot, sans-serif';
+const bodyFontFamily = "'Helvetica Neue',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji";
 
 export const baseTheme = {
     colors: {
@@ -13,6 +14,7 @@ export const baseTheme = {
     headings: {
         fontFamily: headingFontFamily,
     },
+    fontFamily: bodyFontFamily,
     primaryColor: 'brand',
 };
 

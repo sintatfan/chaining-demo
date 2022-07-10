@@ -43,6 +43,7 @@ export const theme = darkTheme;
 export const appStyles = {
     main: {
         background: '#151B1D',
+        color: '#FFFFFF'
     }
 };
 

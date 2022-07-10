@@ -19,3 +19,17 @@
 .editor-page__grid-inner {
   height: 100%;
 }
+.editor-preview-container {
+  flex: 1;
+  background: #ffffff;
+}
+
+.countdown-value {
+  font-size: 48px;
+}
+.countdown-value span {
+  font-size: 28px;
+  font-weight: bold;
+  vertical-align: middle;
+  margin: 0 4px;
+}

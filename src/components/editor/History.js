@@ -31,8 +31,8 @@ function HistoryPoint({item}) {
 }
 
 export default function HistoryCard() {
-    const items = [1,2,3,4].map((item) => (
-        <HistoryPoint item={item} />
+    const items = [1,2,3,4].map((item, i) => (
+        <HistoryPoint item={item} key={i} />
     ));
 
     return (

@@ -1,13 +1,13 @@
-import {Accordion, Box, Card, Code, Grid, Image, MantineProvider, Paper, SimpleGrid, Stack, Title} from "@mantine/core";
+import {Accordion, Box, Card, Code, Image, MantineProvider, SimpleGrid, Stack, Title} from "@mantine/core";
 
 const references = [
     {
         label: 'Shape',
         items: [
-            { label: 'ellipse()', image: 'https://via.placeholder.com/160x90' },
-            { label: 'rect()', image: 'https://via.placeholder.com/160x90' },
-            { label: 'triangle()', image: 'https://via.placeholder.com/160x90' },
-            { label: 'line()', image: 'https://via.placeholder.com/160x90' },
+            { label: 'ellipse()', image: 'https://via.placeholder.com/160x90', code: 'ellipse(width / 2, height / 2, 50, 50);', },
+            { label: 'rect()', image: 'https://via.placeholder.com/160x90', code: 'rect(width / 2, height / 2, 50, 50);' },
+            { label: 'triangle()', image: 'https://via.placeholder.com/160x90', code: 'triangle(width / 2, 10, 10, height - 10, width - 10, height - 10);' },
+            { label: 'line()', image: 'https://via.placeholder.com/160x90', code: 'line(0, 0, width, height);' },
         ]
     },
     {
@@ -32,9 +32,13 @@ const references = [
 ];
 
 function RefCard({item}) {
+    const onDragStart = function (e) {
+        e.dataTransfer.setData("text/plain", item.code || item.label);
+    }
+
     return (
         <MantineProvider>
-            <Card pb={0} px={0} className="editor-ref-item" draggable>
+            <Card pb={0} px={0} className="editor-ref-item" draggable onDragStart={onDragStart}>
                 <Card.Section>
                     <Image src={item.image} alt="" />
                 </Card.Section>

@@ -1,10 +1,25 @@
 import Editor, {useMonaco} from "@monaco-editor/react";
 import raw from "raw.macro";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Box, Button, Card, Group, Switch} from "@mantine/core";
 import {PlayerPlay} from "tabler-icons-react";
+import {insertTextAtPos, MonacoDragNDropProvider} from "./MonacoDragAndDropProvider";
+
+const onDrop = function(e, target, instance) {
+    const text = e.dataTransfer.getData('text');
+    if (text && instance) {
+        insertTextAtPos(instance, text+"\n", [target.position.lineNumber, target.position.column], true);
+    }
+}
 
 export function CodeEditor() {
+    const editorRef = useRef(null);
+    function handleEditorDidMount(editor, monaco) {
+        // here is the editor instance
+        // you can store it in `useRef` for further usage
+        editorRef.current = editor;
+    }
+
     const monaco = useMonaco();
     useEffect(() => {
         // Load p5 type definitions with raw macro
@@ -17,9 +32,14 @@ export function CodeEditor() {
         );
     });
 
+    const dragProvider = new MonacoDragNDropProvider(onDrop, () => editorRef.current );
+
     return (
-        <Editor theme="vs-dark" height="100%" options={{minimap: {enabled: false}}}
-                defaultLanguage="javascript" defaultValue="console.log('hello world');" />
+        <div {...dragProvider.props} className="editor-wrapper">
+            <Editor theme="vs-dark" height="100%" options={{minimap: {enabled: false}}}
+                    onMount={handleEditorDidMount}
+                    defaultLanguage="javascript" defaultValue="console.log('hello world');" />
+        </div>
     );
 }
 

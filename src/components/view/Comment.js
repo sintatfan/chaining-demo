@@ -30,7 +30,7 @@ function CommentList() {
         {id: '3', content: 'Vivamus maximus justo in lacus sollicitudin suscipit sit amet vitae est.', author_name: 'Peter', post_time: new Date()},
         {id: '2', content: 'Vivamus maximus justo in lacus sollicitudin suscipit sit amet vitae est.', author_name: 'Peter', post_time: new Date(2022, 6, 11, 4, 2, 3)},
         {id: '1', content: 'Vivamus maximus justo in lacus sollicitudin suscipit sit amet vitae est.', author_name: 'Peter', post_time: new Date(2022, 6, 11, 1, 2, 3)},
-    ].map((item) => (<CommentEntry comment={item} />));
+    ].map((item) => (<CommentEntry comment={item} key={item.id} />));
 
     return (
         <Stack>

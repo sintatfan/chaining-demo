@@ -5,8 +5,9 @@ import {lightTheme, themeStyles} from "../../theme";
 import {CommentSection} from "./Comment";
 import {MetaDateTime} from "./DateTime";
 import ShareBar from "./ShareBar";
+import {Link} from "react-router-dom";
 
-function ModalHeader() {
+function ModalHeader({projectId, nodeId}) {
     return (
         <Group position="apart" align="start" noWrap className="node-details__header" mb="sm">
             <div>
@@ -18,7 +19,9 @@ function ModalHeader() {
             </div>
 
             <div className="node-details__header__actions">
-                <Button mr="xs"><GitFork /> Fork</Button>
+                <Button mr="xs" component={Link} to={`/project/${projectId}/${nodeId}?action=fork`} target="_blank">
+                    <GitFork /> Fork
+                </Button>
                 <Button color="pink"><Heart /></Button>
             </div>
         </Group>
@@ -33,11 +36,11 @@ function WorkPreview() {
     );
 }
 
-export function NodeDetailsModal({state, onClose}) {
+export function NodeDetailsModal({projectId, nodeId, state, onClose}) {
     return (
         <MantineProvider theme={lightTheme} styles={themeStyles}>
             <Modal opened={state} onClose={onClose} zIndex={300} size="xl" title="View Work">
-                <ModalHeader />
+                <ModalHeader projectId={projectId} nodeId={nodeId} />
                 <WorkPreview />
                 <Grid>
                     <Grid.Col span={6}>
@@ -46,7 +49,9 @@ export function NodeDetailsModal({state, onClose}) {
                     <Grid.Col span={6}>
                         <Group>
                             <ShareBar />
-                            <Button color="gray">View code</Button>
+                            <Button color="gray" component={Link} to={`/project/${projectId}/${nodeId}`} target="_blank">
+                                View code
+                            </Button>
                         </Group>
                     </Grid.Col>
                 </Grid>
@@ -65,7 +70,7 @@ export function ViewNodeButton({projectId, nodeId, onOpened}) {
                 projectId={projectId} nodeId={nodeId}
                 state={opened} onClose={() => setOpened(false)}
             />
-            <Button fullWidth onClick={() => { setOpened(true); onOpened(); }}>
+            <Button fullWidth component={Link} to={`/project/${projectId}/${nodeId}`} target="_blank">
                 <Eye /> View
             </Button>
         </>

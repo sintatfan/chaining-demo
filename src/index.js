@@ -19,7 +19,7 @@ root.render(
               <Route path="/" element={<App />}>
                   <Route index element={<HomePage />} />
                   <Route path="project/:projectId" element={<ProjectHomePage />} />
-                  <Route path="project/:projectId/:nodeId/fork" element={<EditorPage />} />
+                  <Route path="project/:projectId/:nodeId" element={<EditorPage />} />
                   <Route path="*" element={<NotFound />} />
               </Route>
           </Routes>

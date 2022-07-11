@@ -7,6 +7,7 @@ import HomePage from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import EditorPage from "./pages/Editor";
 import './firebase';
+import ProjectHomePage from "./pages/ProjectHome";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +17,8 @@ root.render(
           <Routes>
               <Route path="/" element={<App />}>
                   <Route index element={<HomePage />} />
-                  <Route path="editor" element={<EditorPage />} />
+                  <Route path="project/:projectId" element={<ProjectHomePage />} />
+                  <Route path="project/:projectId/:nodeId/fork" element={<EditorPage />} />
                   <Route path="*" element={<NotFound />} />
               </Route>
           </Routes>

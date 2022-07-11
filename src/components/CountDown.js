@@ -43,7 +43,7 @@ export default function CountDown({target}) {
     const valueSx = (theme) => ({ fontFamily: theme.headings.fontFamily, lineHeight: 1 });
 
     return (
-        <Box style={{textAlign: 'right'}}>
+        <Box style={{textAlign: 'right'}} className="countdown-widget">
             <Title order={5} sx={titleSx}>Countdown</Title>
             <Text sx={valueSx} className="countdown-value">
                 {

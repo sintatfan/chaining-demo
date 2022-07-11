@@ -1,5 +1,5 @@
 import {Box, Button, Group, Stack, Textarea} from "@mantine/core";
-import GlobalTimer from "../GlobalTimer";
+import CountDown from "../CountDown";
 import {useAuthValue} from "../../plugins/auth";
 
 export default function EditorResultCol() {
@@ -18,7 +18,7 @@ export default function EditorResultCol() {
                     </Group>
                 </Box>
                 <Box>
-                    <GlobalTimer />
+                    <CountDown />
                 </Box>
             </Group>
         </Stack>

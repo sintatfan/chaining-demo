@@ -55,7 +55,6 @@ export function NodeDetailsModal({projectId, nodeId, state, onClose}) {
                         </Group>
                     </Grid.Col>
                 </Grid>
-                This is node details dialog
             </Modal>
         </MantineProvider>
     );

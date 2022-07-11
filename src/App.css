@@ -81,3 +81,14 @@
 .node-details__header__actions {
   flex-shrink: 0;
 }
+
+.project-view {
+  position: fixed;
+  top: var(--mantine-header-height, 0px);
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.project-view__sidebar {
+
+}

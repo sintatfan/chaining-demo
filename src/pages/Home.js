@@ -6,7 +6,7 @@ export default function HomePage() {
     const navigate = useNavigate();
     useEffect(() => {
         // Redirect to project #1 (with hard-coded data in the DB)
-        navigate('/project/1');
+        navigate('/project/1', { replace: true });
     });
 
     // Show loading spinner

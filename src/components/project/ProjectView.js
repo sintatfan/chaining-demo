@@ -1,19 +1,8 @@
-import {createContext, useContext} from "react";
-import CountDown from "../CountDown";
+import {createContext} from "react";
 import ProjectMainView from "./ProjectMainView";
+import Sidebar from "./Sidebar";
 
-const ProjectContext = createContext(null);
-
-function Sidebar() {
-    const project = useContext(ProjectContext);
-
-    return (
-        <div className="project-view__sidebar">
-            <div style={{flex: 1}}></div>
-            <CountDown target={project.expiry_time.toDate()} />
-        </div>
-    );
-}
+export const ProjectContext = createContext(null);
 
 export default function ProjectView({project}) {
     console.log(project);

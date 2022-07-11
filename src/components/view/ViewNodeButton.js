@@ -28,7 +28,7 @@ function ModalHeader({projectId, nodeId}) {
     )
 }
 
-function WorkPreview() {
+export function WorkPreview() {
     return (
         <Box mb="sm">
             <Skeleton width="100%" height={300}></Skeleton>

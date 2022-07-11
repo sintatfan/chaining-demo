@@ -104,6 +104,12 @@
 .project-view__sidebar .countdown-widget {
   padding: 24px 16px;
 }
+.project-view__sidebar__recommend {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 
 .project-view__main {
   width: 100%;

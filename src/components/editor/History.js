@@ -1,9 +1,11 @@
-import {Button, Card, Group, Popover, Skeleton, Title, UnstyledButton} from "@mantine/core";
-import {Eye} from "tabler-icons-react";
+import {Card, Group, Popover, Skeleton, Title, UnstyledButton} from "@mantine/core";
 import {useState} from "react";
+import {ViewNodeButton} from "../view/ViewNodeButton";
+import {useParams} from "react-router-dom";
 
 function HistoryPoint({item}) {
     const [opened, setOpened] = useState(false);
+    const {projectId} = useParams();
 
     const target = (
         <UnstyledButton onClick={() => setOpened((o) => !o)}>
@@ -26,7 +28,8 @@ function HistoryPoint({item}) {
             {/* other content */}
         </Skeleton>
 
-        <Button fullWidth><Eye /> View</Button>
+        {/* TODO: replace params with item's data */}
+        <ViewNodeButton projectId={projectId} nodeId={'root'} />
     </Popover>;
 }
 

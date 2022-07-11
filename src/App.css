@@ -74,3 +74,10 @@
 .editor-ref-item img {
   pointer-events: none;
 }
+
+.node-details__header {
+
+}
+.node-details__header__actions {
+  flex-shrink: 0;
+}

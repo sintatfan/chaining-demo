@@ -3,7 +3,7 @@ import {useState} from "react";
 import {lightTheme, logoLight, themeStyles} from "../../theme";
 import {useForm, zodResolver} from "@mantine/form";
 import { z } from 'zod';
-import {passwordSignIn, signInWithGitHub, signInWithGoogle} from '../../firebase';
+import {passwordSignIn, signInWithGitHub, signInWithGoogle} from '../../plugins/firebase';
 import {BrandGithub, BrandGoogle} from "tabler-icons-react";
 import {showNotification} from "@mantine/notifications";
 

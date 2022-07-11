@@ -1,7 +1,7 @@
 import {Avatar, Box, Group, Menu, ThemeIcon, Title, UnstyledButton} from "@mantine/core";
 import {CaretDown, CircleDashed, CirclePlus, Logout, User} from "tabler-icons-react";
 import {forwardRef} from "react";
-import {logout} from "../../firebase";
+import {logout} from "../../plugins/firebase";
 
 const MenuActivator = forwardRef(({ avatar, name, ...others }, ref) => {
     return (

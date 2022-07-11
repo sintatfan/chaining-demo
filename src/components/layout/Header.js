@@ -3,7 +3,7 @@ import HeaderGuest from "./HeaderGuest";
 import HeaderUser from "./HeaderUser";
 import {logoDark} from "../../theme";
 import {Link} from "react-router-dom";
-import {useAuthValue} from "../../auth";
+import {useAuthValue} from "../../plugins/auth";
 
 function HeaderProfile() {
     const {currentUser} = useAuthValue();

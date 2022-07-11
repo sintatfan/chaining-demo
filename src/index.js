@@ -6,7 +6,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import HomePage from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import EditorPage from "./pages/Editor";
-import './firebase';
+import './plugins/firebase';
+import './plugins/dayjs';
 import ProjectHomePage from "./pages/ProjectHome";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

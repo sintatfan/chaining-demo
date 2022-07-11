@@ -1,6 +1,6 @@
 import {Box, Button, Group, Stack, Textarea} from "@mantine/core";
 import GlobalTimer from "../GlobalTimer";
-import {useAuthValue} from "../../auth";
+import {useAuthValue} from "../../plugins/auth";
 
 export default function EditorResultCol() {
     const {currentUser} = useAuthValue();

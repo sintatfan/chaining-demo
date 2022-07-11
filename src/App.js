@@ -4,10 +4,10 @@ import {AppShell, Global, MantineProvider} from '@mantine/core';
 import {appStyles, globalStyles, theme, themeStyles} from "./theme";
 import AppHeader from "./components/layout/Header";
 import {NotificationsProvider} from "@mantine/notifications";
-import {AuthProvider} from "./auth";
+import {AuthProvider} from "./plugins/auth";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from 'firebase/auth';
-import {auth, extractUserInfo} from "./firebase";
+import {auth, extractUserInfo} from "./plugins/firebase";
 
 function App() {
     // User auth state

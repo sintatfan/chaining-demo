@@ -1,6 +1,7 @@
 import {Box, Button, Group, Stack, Textarea} from "@mantine/core";
 import CountDown from "../CountDown";
 import {useAuthValue} from "../../plugins/auth";
+import PreviewArea from "../preview/PreviewArea";
 
 export default function EditorResultCol() {
     const {currentUser} = useAuthValue();
@@ -9,6 +10,7 @@ export default function EditorResultCol() {
         <Stack className="editor-page__grid-inner">
             <Box className="editor-preview-container">
                 {/* TODO: preview area */}
+                <PreviewArea />
             </Box>
             <Group position="apart" align="end">
                 <Box style={{flex: 1, maxWidth: 500}}>

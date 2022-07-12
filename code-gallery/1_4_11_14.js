@@ -17,7 +17,6 @@ let accelX = 0.0, accelY = 0.0;
 let deltaX = 0.0, deltaY = 0.0;
 let springing = 0.0009, damping = 0.98;
 
-
 let nodes = 50;
 
 let nodeStartX = [];
@@ -31,6 +30,7 @@ let organicConstant = 1.0;
 
 function setup() {
     createCanvas(600, 600);
+    background(220);
     walk = width/2;
 
 
@@ -52,13 +52,10 @@ function setup() {
 }
 
 function draw() {
-    zero();
-    firstOne();
     secondOne();
 }
 
 function zero(){
-    background(220);
     fill(180);
     noStroke();
     circle(width/2, height/2, 150);
@@ -110,8 +107,6 @@ function drawShape() {
 
 function moveShape() {
 
-
-
     deltaX = random(0, windowWidth) - centerX;
     deltaY = random(0, windowHeight) - centerY;
 
@@ -134,8 +129,6 @@ function moveShape() {
         angle[i] += frequency[i];
     }
 }
-
-
 
 function secondOne() {
     drawShape();

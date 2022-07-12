@@ -2,9 +2,12 @@ import {Box, Button, Group, Stack, Textarea} from "@mantine/core";
 import CountDown from "../CountDown";
 import {useAuthValue} from "../../plugins/auth";
 import PreviewArea from "../preview/PreviewArea";
+import {useContext} from "react";
+import {ProjectContext} from "../project/ProjectDataWrapper";
 
 export default function EditorResultCol() {
     const {currentUser} = useAuthValue();
+    const project = useContext(ProjectContext);
 
     return (
         <Stack className="editor-page__grid-inner">
@@ -20,7 +23,7 @@ export default function EditorResultCol() {
                     </Group>
                 </Box>
                 <Box>
-                    <CountDown />
+                    <CountDown target={project.expiry_time.toDate()} />
                 </Box>
             </Group>
         </Stack>

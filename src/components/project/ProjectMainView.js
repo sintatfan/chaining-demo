@@ -1,6 +1,6 @@
-import {ProjectContext} from "./ProjectView";
 import {useCallback, useContext, useState} from "react";
 import Tree from 'react-d3-tree';
+import {ProjectContext} from "./ProjectDataWrapper";
 
 const useCenteredTree = () => {
     const [translate, setTranslate] = useState({ x: 0, y: 0 });

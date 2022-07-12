@@ -1,17 +1,11 @@
-import {createContext} from "react";
 import ProjectMainView from "./ProjectMainView";
 import Sidebar from "./Sidebar";
 
-export const ProjectContext = createContext(null);
-
-export default function ProjectView({project}) {
-    console.log(project);
+export default function ProjectView() {
     return (
-        <ProjectContext.Provider value={project}>
-            <div className="project-view">
-                <ProjectMainView />
-                <Sidebar />
-            </div>
-        </ProjectContext.Provider>
+        <div className="project-view">
+            <ProjectMainView />
+            <Sidebar />
+        </div>
     );
 }

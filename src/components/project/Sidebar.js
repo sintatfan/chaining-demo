@@ -1,10 +1,10 @@
 import CountDown from "../CountDown";
 import {useContext} from "react";
-import {ProjectContext} from "./ProjectView";
-import {Button, Group, Text, UnstyledButton} from "@mantine/core";
+import {Group, Text, UnstyledButton} from "@mantine/core";
 import {Refresh, User} from "tabler-icons-react";
 import {MetaDateTime} from "../view/DateTime";
 import {WorkPreview} from "../view/ViewNodeButton";
+import {ProjectContext} from "./ProjectDataWrapper";
 
 function RandomNodeCard() {
     return (

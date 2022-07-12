@@ -9,7 +9,8 @@ import Emitter from "../../emitter";
 const onDrop = function(e, target, instance) {
     const text = e.dataTransfer.getData('text');
     if (text && instance) {
-        insertTextAtPos(instance, text+"\n", [target.position.lineNumber, target.position.column], true);
+        insertTextAtPos(instance, "\n"+text+"\n", [target.position.lineNumber, target.position.column], true);
+        instance.getAction('editor.action.formatDocument').run();
     }
 }
 

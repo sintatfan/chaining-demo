@@ -59,7 +59,7 @@ export class MonacoDragNDropProvider {
                 getId: () => 'drag',
                 getDomNode: () => this.domNode,
                 getPosition: () => ({
-                    position: this.dragTarget.position,
+                    position: this.dragTarget?.position,
                     preference: [ContentWidgetPositionPreference.EXACT, ContentWidgetPositionPreference.EXACT]
                 })
             };

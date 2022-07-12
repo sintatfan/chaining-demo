@@ -107,8 +107,8 @@ function drawShape() {
 
 function moveShape() {
 
-    deltaX = random(0, windowWidth) - centerX;
-    deltaY = random(0, windowHeight) - centerY;
+    deltaX = random(0, width) - centerX;
+    deltaY = random(0, height) - centerY;
 
     deltaX *= springing;
     deltaY *= springing;

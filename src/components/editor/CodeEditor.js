@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import {Box, Button, Card, Group, Switch} from "@mantine/core";
 import {PlayerPlay} from "tabler-icons-react";
 import {insertTextAtPos, MonacoDragNDropProvider} from "./MonacoDragAndDropProvider";
+import Emitter from "../../emitter";
 
 const onDrop = function(e, target, instance) {
     const text = e.dataTransfer.getData('text');
@@ -12,12 +13,23 @@ const onDrop = function(e, target, instance) {
     }
 }
 
-export function CodeEditor() {
+const defaultContent = `function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  ellipse(50,50,80,80);
+}`;
+
+export function CodeEditor({value, onChange, onMount}) {
     const editorRef = useRef(null);
     function handleEditorDidMount(editor, monaco) {
         // here is the editor instance
         // you can store it in `useRef` for further usage
         editorRef.current = editor;
+
+        typeof onMount === 'function' && onMount(editor, monaco);
     }
 
     const monaco = useMonaco();
@@ -37,19 +49,28 @@ export function CodeEditor() {
     return (
         <div {...dragProvider.props} className="editor-wrapper">
             <Editor theme="vs-dark" height="100%" options={{minimap: {enabled: false}}}
+                    defaultLanguage="javascript"
+                    value={value}
+                    onChange={onChange}
                     onMount={handleEditorDidMount}
-                    defaultLanguage="javascript" defaultValue="console.log('hello world');" />
+            />
         </div>
     );
 }
 
+function runCode(code) {
+    Emitter.emit('EDITOR.RUN_CODE', code);
+}
+
 export function EditorCard() {
     const [autoRefresh, setAutoRefresh] = useState(false);
+    const [code, setCode] = useState(defaultContent);
+
     return (
         <>
             <Card py="xs">
                 <Group position="apart">
-                    <Button radius="xl">
+                    <Button radius="xl" onClick={() => runCode(code)}>
                         <PlayerPlay />
                     </Button>
                     <Switch
@@ -60,7 +81,11 @@ export function EditorCard() {
                 </Group>
             </Card>
             <Box style={{flex: 1}}>
-                <CodeEditor />
+                <CodeEditor
+                    value={code}
+                    onChange={(v) => setCode(v)}
+                    onMount={() => runCode(code)}
+                />
             </Box>
         </>
     );

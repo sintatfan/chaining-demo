@@ -24,7 +24,7 @@ function Timer({target}) {
         }, 1000);
 
         return () => clearInterval(intervalId);
-    }, []);
+    }, [target]);
 
     return (
         <>
@@ -37,7 +37,7 @@ function Timer({target}) {
 
 export default function CountDown({target}) {
     // Convert to dayjs object
-    target = dayjs(target || new Date);
+    target = dayjs(target || new Date());
 
     const titleSx = (theme) => ({ color: theme.colors.gray[5] });
     const valueSx = (theme) => ({ fontFamily: theme.headings.fontFamily, lineHeight: 1 });

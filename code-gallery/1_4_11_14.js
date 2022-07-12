@@ -1,21 +1,13 @@
-let ballR = 150;
-let Plus = true;
-let moveP = true;
 let R = 25;
 let G = 25;
 let B = 25;
 let walk;
-
-let nodesArr = []
-
-
-
 let centerX = 0.0, centerY = 0.0;
 
 let radius = 50, rotAngle = -90;
 let accelX = 0.0, accelY = 0.0;
 let deltaX = 0.0, deltaY = 0.0;
-let springing = 0.0009, damping = 0.98;
+let springing = 0.003, damping = 0.98;
 
 let nodes = 50;
 
@@ -61,30 +53,6 @@ function zero(){
     circle(width/2, height/2, 150);
 }
 
-function firstOne(){
-
-    if (Plus){
-        ballR++;
-        if(ballR == 200){
-            Plus = false;
-        }
-    }
-
-    if(!Plus){
-        ballR--;
-        if(ballR == 150){
-            Plus = true;
-        }
-    }
-
-    fill(230, 152, 150);
-    noStroke();
-    circle(walk, walk, ballR);
-
-}
-
-
-
 function drawShape() {
     for (let i = 0; i < nodes; i++){
         nodeStartX[i] = centerX + cos(radians(rotAngle)) * radius;
@@ -104,9 +72,7 @@ function drawShape() {
     endShape(CLOSE);
 }
 
-
 function moveShape() {
-
     deltaX = random(0, width) - centerX;
     deltaY = random(0, height) - centerY;
 

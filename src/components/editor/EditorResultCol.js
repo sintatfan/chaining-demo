@@ -32,7 +32,7 @@ export default function EditorResultCol() {
                         <Button disabled={!currentUser}>Submit</Button>
                     </Group>
                 </Box>
-                <Box>
+                <Box style={{width: 230}}>
                     <CountDown target={project.expiry_time.toDate()} />
                 </Box>
             </Group>

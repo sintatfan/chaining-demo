@@ -1,6 +1,10 @@
-import {useCallback, useContext, useState} from "react";
+import {useCallback, useContext, useEffect, useState, useTransition} from "react";
 import Tree from 'react-d3-tree';
 import {ProjectContext} from "./ProjectDataWrapper";
+import {useParams} from "react-router-dom";
+import {getProjectMeta, getTree} from "../../plugins/firestore";
+import {LoadingOverlay} from "@mantine/core";
+import ErrorScreen from "../layout/ErrorScreen";
 
 const useCenteredTree = () => {
     const [translate, setTranslate] = useState({ x: 0, y: 0 });
@@ -14,77 +18,51 @@ const useCenteredTree = () => {
 };
 
 
-function TreeView() {
-    const project = useContext(ProjectContext);
-    const [translate, containerRef] = useCenteredTree();
-    console.log(project);
+function TreeDataLoader({projectId, children}) {
+    const [isPending, startTransition] = useTransition();
+    const [nodes, setNodes] = useState(null);
+    const [error, setError] = useState(null);
 
-    const orgChart = {
-        name: 'CEO',
-        children: [
-            {
-                name: 'Manager',
-                attributes: {},
-                children: [
-                    {
-                        name: 'Foreman',
-                        attributes: {},
-                        children: [
-                            {
-                                name: 'Worker',
-                            },
-                        ],
-                    },
-                    {
-                        name: 'Foreman',
-                        attributes: {},
-                        children: [
-                            {
-                                name: 'Worker',
-                            },
-                        ],
-                    },
-                ],
-            },
-        ],
-    };
+    useEffect(() => {
+        let ignore = false;
+        async function fetchData() {
+            const result = await getTree(projectId);
+            if (!ignore) {
 
-    const renderForeignObjectNode = ({
-                                         nodeDatum,
-                                         toggleNode,
-                                         foreignObjectProps
-                                     }) => (
-        <g>
-            <circle r={15}></circle>
-            {/* `foreignObject` requires width & height to be explicitly set. */}
-            <foreignObject {...foreignObjectProps}>
-                <div style={{ border: "1px solid black", backgroundColor: "#dedede" }}>
-                    <h3 style={{ textAlign: "center" }}>{nodeDatum.name}</h3>
-                    {nodeDatum.children && (
-                        <button style={{ width: "100%" }} onClick={toggleNode}>
-                            {nodeDatum.__rd3t.collapsed ? "Expand" : "Collapse"}
-                        </button>
-                    )}
-                </div>
-            </foreignObject>
-        </g>
-    );
+                // if (result) {
+                //     setProject(result);
+                // }
+            }
+        }
+        startTransition(async () => {
+            await fetchData();
+        });
 
-    const nodeSize = { x: 200, y: 200 };
-    const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, x: 20 };
+        return () => { ignore = true; };
+    }, [projectId]);
+
+    if (isPending || (!nodes && !error)) {
+        return <LoadingOverlay visible />;
+    } else if (error) {
+        return <ErrorScreen message={error} />;
+    }
 
     return (
-        <div className="project-tree" ref={containerRef}>
-            <Tree
-                data={orgChart}
-                pathClassFunc={() => 'project-tree__link'}
-                collapsible={false}
-                translate={translate}
-                renderCustomNodeElement={(rd3tProps) =>
-                    renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
-                }
-            />
-        </div>
+        <div>{children}</div>
+    );
+}
+
+function TreeView() {
+    const {projectId} = useParams();
+    const project = useContext(ProjectContext);
+    const [translate, containerRef] = useCenteredTree();
+
+    return (
+        <TreeDataLoader projectId={projectId}>
+            <div className="project-tree" ref={containerRef}>
+                Hello
+            </div>
+        </TreeDataLoader>
     );
 }
 

@@ -8,6 +8,7 @@ import EditorPage from "./pages/Editor";
 import './plugins/firebase';
 import './plugins/dayjs';
 import ProjectHomePage from "./pages/ProjectHome";
+import ImportDataTool from "./pages/ImportDataTool";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,7 @@ root.render(
                   <Route index element={<HomePage />} />
                   <Route path="project/:projectId" element={<ProjectHomePage />} />
                   <Route path="project/:projectId/:nodeId" element={<EditorPage />} />
+                  <Route path="import-data" element={<ImportDataTool />} />
                   <Route path="*" element={<NotFound />} />
               </Route>
           </Routes>

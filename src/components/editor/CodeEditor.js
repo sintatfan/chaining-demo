@@ -1,10 +1,11 @@
 import Editor, {useMonaco} from "@monaco-editor/react";
 import raw from "raw.macro";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {Box, Button, Card, Group, Switch} from "@mantine/core";
 import {PlayerPlay} from "tabler-icons-react";
 import {insertTextAtPos, MonacoDragNDropProvider} from "./MonacoDragAndDropProvider";
 import Emitter from "../../emitter";
+import debounce from 'lodash/debounce';
 
 const onDrop = function(e, target, instance) {
     const text = e.dataTransfer.getData('text');
@@ -67,6 +68,22 @@ export function EditorCard() {
     const [autoRefresh, setAutoRefresh] = useState(false);
     const [code, setCode] = useState(defaultContent);
 
+    // Handle code change event of the code editor
+    const onCodeChange = function (v) {
+        // Update state
+        setCode(v);
+
+        // Trigger auto preview, with a few seconds of debounce
+        if (autoRefresh) {
+            debouncedRunCode(v);
+        }
+    };
+
+    const debounced = debounce(runCode, 1000);
+    const debouncedRunCode = useCallback((newValue) => {
+        debounced(newValue);
+    }, [code]);
+
     return (
         <>
             <Card py="xs">
@@ -84,7 +101,7 @@ export function EditorCard() {
             <Box style={{flex: 1}}>
                 <CodeEditor
                     value={code}
-                    onChange={(v) => setCode(v)}
+                    onChange={onCodeChange}
                     onMount={() => runCode(code)}
                 />
             </Box>

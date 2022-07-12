@@ -1,11 +1,16 @@
+import previewEllipse from '../../images/keyword_preview/preview_ellipse.svg';
+import previewRect from '../../images/keyword_preview/preview_rect.svg';
+import previewTriangle from '../../images/keyword_preview/preview_triangle.svg';
+import previewLine from '../../images/keyword_preview/preview_line.svg';
+
 export const references = [
     {
         label: 'Shape',
         items: [
-            { label: 'ellipse()', image: 'https://via.placeholder.com/160x90', code: 'ellipse(width / 2, height / 2, 50, 50);', },
-            { label: 'rect()', image: 'https://via.placeholder.com/160x90', code: 'rect(width / 2 - 25, height / 2 - 25, 50, 50);' },
-            { label: 'triangle()', image: 'https://via.placeholder.com/160x90', code: 'triangle(width / 2, 10, 10, height - 10, width - 10, height - 10);' },
-            { label: 'line()', image: 'https://via.placeholder.com/160x90', code: 'line(0, 0, width, height);' },
+            { label: 'ellipse()', image: previewEllipse, code: 'ellipse(width / 2, height / 2, 50, 50);', },
+            { label: 'rect()', image: previewRect, code: 'rect(width / 2 - 25, height / 2 - 25, 50, 50);' },
+            { label: 'triangle()', image: previewTriangle, code: 'triangle(width / 2, 10, 10, height - 10, width - 10, height - 10);' },
+            { label: 'line()', image: previewLine, code: 'line(0, 0, width, height);' },
         ]
     },
     {

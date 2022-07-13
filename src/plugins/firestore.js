@@ -53,3 +53,9 @@ export async function getNodes(projectId) {
     });
     return nodes;
 }
+
+export async function getNode(projectId, nodeId) {
+    const docRef = doc(db, 'projects', projectId, 'nodes', nodeId);
+    const docSnap = await getDoc(docRef);
+    return docSnap.exists() ? docSnap.data() : null;
+}

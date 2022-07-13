@@ -174,3 +174,13 @@
 .node-video-wrapper:hover {
   border-radius: 0;
 }
+
+.quickview__preview {
+  height: 620px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.quickview__preview iframe {
+  max-width: 600px;
+  margin: auto;
+}

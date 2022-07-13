@@ -2,7 +2,6 @@ import {createContext, useEffect, useState, useTransition} from "react";
 import {getNodes, getProjectMeta} from "../../plugins/firestore";
 import {LoadingOverlay} from "@mantine/core";
 import ErrorScreen from "../layout/ErrorScreen";
-import Emitter from "../../emitter";
 
 export const ProjectContext = createContext(null);
 export const ProjectNodesContext = createContext(null);
@@ -75,8 +74,4 @@ export function ProjectNodesDataWrapper({projectId, children}) {
             {children}
         </ProjectNodesContext.Provider>
     );
-}
-
-export function openPreview(nodeId) {
-    Emitter.emit('PROJECT.NODE_PREVIEW', nodeId);
 }

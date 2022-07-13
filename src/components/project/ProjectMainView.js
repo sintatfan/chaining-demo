@@ -1,7 +1,9 @@
 import {useContext} from "react";
-import {openPreview, ProjectNodesContext} from "./ProjectDataWrapper";
+import {ProjectNodesContext} from "./ProjectDataWrapper";
 import timelineImg from "../../images/home_timeline.svg";
 import cloneDeep from "lodash/cloneDeep";
+import NodePreview, {openPreview} from "../view/NodePreview";
+import {useParams} from "react-router-dom";
 
 /**
  * A recursive function to convert the array of nodes to the root node with populated children
@@ -45,6 +47,8 @@ function TreeNode({node, i, n = 0}) {
 
     const dim = node.view_count * 2;
 
+    const {projectId} = useParams();
+
     return (
         <g transform={`translate(${x} ${y})`}>
             {children}
@@ -53,7 +57,7 @@ function TreeNode({node, i, n = 0}) {
             <foreignObject x={-dim/2} y={-dim/2}
                            width={dim}
                            height={dim}>
-                <div className="node-video-wrapper" onClick={() => openPreview(node.id)}>
+                <div className="node-video-wrapper" onClick={() => openPreview(projectId, node.id)}>
                     <video xmlns="http://www.w3.org/1999/xhtml"
                            loop="loop" autoPlay="autoPlay"
                            playsInline="playsInline" muted="muted">
@@ -96,6 +100,7 @@ export default function ProjectMainView() {
         <div className="project-view__main">
             <TreeView />
             <TimelineView />
+            <NodePreview />
         </div>
     )
 }

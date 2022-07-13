@@ -139,3 +139,9 @@
   height: 100%;
   border: none;
 }
+
+.project-timeline {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+}

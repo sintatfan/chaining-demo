@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import {getProjectMeta, getTree} from "../../plugins/firestore";
 import {LoadingOverlay} from "@mantine/core";
 import ErrorScreen from "../layout/ErrorScreen";
+import timelineImg from "../../images/home_timeline.svg";
 
 const useCenteredTree = () => {
     const [translate, setTranslate] = useState({ x: 0, y: 0 });
@@ -28,10 +29,19 @@ function TreeView() {
     );
 }
 
+function TimelineView() {
+    return (
+        <div className="project-timeline">
+            <img src={timelineImg} alt="" />
+        </div>
+    );
+}
+
 export default function ProjectMainView() {
     return (
         <div className="project-view__main">
             <TreeView />
+            <TimelineView />
         </div>
     )
 }

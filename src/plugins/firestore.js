@@ -57,8 +57,31 @@ export async function getNodes(projectId) {
 export async function getNode(projectId, nodeId) {
     const docRef = doc(db, 'projects', projectId, 'nodes', nodeId);
     const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) return null;
+
     const data = docSnap.data();
     data.id = docSnap.id;
 
-    return docSnap.exists() ? data : null;
+    // Find ancestors
+    if (data.parent) {
+        data.parent = data.parent.id;
+
+        const nodes = await getNodes(projectId);
+        const ancestors = [];
+
+        let parentId = data.parent;
+        while (parentId) {
+            const ancestor = nodes.find(i => i.id == parentId);
+            if (ancestor) {
+                ancestors.push(ancestor);
+                parentId = ancestor.parent;
+            } else {
+                parentId = null;
+            }
+        }
+
+        data.ancestors = ancestors.reverse();
+    }
+
+    return data;
 }

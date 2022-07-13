@@ -1,7 +1,8 @@
-import {Card, Group, Popover, Skeleton, Title, UnstyledButton} from "@mantine/core";
-import {useState} from "react";
-import {ViewNodeButton} from "../view/ViewNodeButton";
+import {Box, Card, Group, Popover, Title, UnstyledButton} from "@mantine/core";
+import {useContext, useState} from "react";
+import {ViewNodeButton, WorkPreview} from "../view/ViewNodeButton";
 import {useParams} from "react-router-dom";
+import {NodeContext} from "../project/ProjectDataWrapper";
 
 function HistoryPoint({item}) {
     const [opened, setOpened] = useState(false);
@@ -23,18 +24,19 @@ function HistoryPoint({item}) {
         className="history-chain-point"
         styles={(theme) => ({arrow: {backgroundColor: theme.colors.dark[7]}, popover: {backgroundColor: theme.colors.dark[7]}})}
     >
-        <Skeleton visible height={226} mb="xs">
-            Lorem ipsum dolor sit amet...
-            {/* other content */}
-        </Skeleton>
+        <Box mb="xs">
+            <WorkPreview videoUrl={item.cover_url} />
+        </Box>
 
         {/* TODO: replace params with item's data */}
-        <ViewNodeButton projectId={projectId} nodeId={'root'} />
+        <ViewNodeButton projectId={projectId} nodeId={item.id} />
     </Popover>;
 }
 
 export default function HistoryCard() {
-    const items = [1,2,3,4].map((item, i) => (
+    const node = useContext(NodeContext);
+
+    const items = node.ancestors?.map((item, i) => (
         <HistoryPoint item={item} key={i} />
     ));
 

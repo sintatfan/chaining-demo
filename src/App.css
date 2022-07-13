@@ -103,6 +103,14 @@
   background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 75%);
   pointer-events: none;
 }
+.node-random-card {
+  pointer-events: all;
+}
+.node-random-card .work-preview {
+  width: 240px;
+  cursor: pointer;
+}
+
 .project-view__sidebar .countdown-widget {
   padding: 24px 16px;
 }

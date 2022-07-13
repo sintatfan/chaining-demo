@@ -1,5 +1,5 @@
 import {Eye, GitFork, Heart, User} from "tabler-icons-react";
-import {Box, Button, Grid, Group, MantineProvider, Modal, Skeleton, Text} from "@mantine/core";
+import {AspectRatio, Box, Button, Grid, Group, MantineProvider, Modal, Skeleton, Text} from "@mantine/core";
 import {useState} from "react";
 import {lightTheme, themeStyles} from "../../theme";
 import {CommentSection} from "./Comment";
@@ -28,11 +28,13 @@ function ModalHeader({projectId, nodeId}) {
     )
 }
 
-export function WorkPreview() {
+export function WorkPreview({videoUrl, ratio = 1}) {
     return (
-        <Box mb="sm">
-            <Skeleton width="100%" height={300}></Skeleton>
-        </Box>
+        <AspectRatio ratio={ratio} className="work-preview">
+            <video autoPlay muted playsInline loop>
+                <source src={videoUrl} type="video/mp4" />
+            </video>
+        </AspectRatio>
     );
 }
 

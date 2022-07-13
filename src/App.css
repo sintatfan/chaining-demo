@@ -145,3 +145,21 @@
   bottom: 48px;
   left: 0;
 }
+
+.project-tree svg {
+  width: 100%;
+  height: 100%;
+}
+.project-tree svg circle {
+  fill: #ffffff;
+}
+.project-tree svg .link {
+  stroke: #ffffff;
+  stroke-width: 1px;
+  fill: none;
+}
+.project-tree svg video {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}

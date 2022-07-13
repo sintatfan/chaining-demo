@@ -30,9 +30,10 @@ export async function getNodes(projectId) {
     const nodes = [];
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+        // console.log(doc.id, " => ", doc.data());
         const data = doc.data();
         const node = omit(data, ['parent', 'children', 'post_time']);
+        node.id = doc.id;
 
         // Convert Firestore Timestamp to Date object
         if (data.post_time) {
@@ -44,6 +45,7 @@ export async function getNodes(projectId) {
             node.parent = data.parent.id;
         }
         if (data.children) {
+            console.log(data.children.map(i => i.id));
             node.children = data.children.map(i => i.id);
         }
 

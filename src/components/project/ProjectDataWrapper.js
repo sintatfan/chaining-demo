@@ -1,5 +1,5 @@
 import {createContext, useEffect, useState, useTransition} from "react";
-import {getNodes, getProjectMeta, getTree} from "../../plugins/firestore";
+import {getNodes, getProjectMeta} from "../../plugins/firestore";
 import {LoadingOverlay} from "@mantine/core";
 import ErrorScreen from "../layout/ErrorScreen";
 

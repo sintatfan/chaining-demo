@@ -1,22 +1,7 @@
-import {useCallback, useContext, useEffect, useState, useTransition} from "react";
-import {ProjectContext, ProjectNodesContext, ProjectNodesDataWrapper} from "./ProjectDataWrapper";
-import {useParams} from "react-router-dom";
-import {getProjectMeta, getTree} from "../../plugins/firestore";
-import {LoadingOverlay} from "@mantine/core";
-import ErrorScreen from "../layout/ErrorScreen";
+import {useContext} from "react";
+import {openPreview, ProjectNodesContext} from "./ProjectDataWrapper";
 import timelineImg from "../../images/home_timeline.svg";
 import cloneDeep from "lodash/cloneDeep";
-
-const useCenteredTree = () => {
-    const [translate, setTranslate] = useState({ x: 0, y: 0 });
-    const containerRef = useCallback((containerElem) => {
-        if (containerElem !== null) {
-            const { width, height } = containerElem.getBoundingClientRect();
-            setTranslate({ x: width / 2, y: height / 2 });
-        }
-    }, []);
-    return [translate, containerRef];
-};
 
 /**
  * A recursive function to convert the array of nodes to the root node with populated children
@@ -68,21 +53,19 @@ function TreeNode({node, i, n = 0}) {
             <foreignObject x={-dim/2} y={-dim/2}
                            width={dim}
                            height={dim}>
-                <video xmlns="http://www.w3.org/1999/xhtml"
-                       loop="loop" autoPlay="autoPlay"
-                       playsInline="playsInline" muted="muted">
-                    <source src={node.cover_url} type="video/mp4" />
-                </video>
+                <div className="node-video-wrapper" onClick={() => openPreview(node.id)}>
+                    <video xmlns="http://www.w3.org/1999/xhtml"
+                           loop="loop" autoPlay="autoPlay"
+                           playsInline="playsInline" muted="muted">
+                        <source src={node.cover_url} type="video/mp4" />
+                    </video>
+                </div>
             </foreignObject>
         </g>
     );
 }
 
 function TreeView() {
-    const {projectId} = useParams();
-    const project = useContext(ProjectContext);
-    const [translate, containerRef] = useCenteredTree();
-
     const nodes = useContext(ProjectNodesContext);
     const rootNode = nodesToTree(nodes);
 
@@ -90,7 +73,7 @@ function TreeView() {
     const h = 1080;
 
     return (
-        <div className="project-tree" ref={containerRef}>
+        <div className="project-tree">
             <svg viewBox={`0 0 ${w} ${h}`}>
                 <g transform={`translate(-260 ${h / 2})`}>
                     <TreeNode node={rootNode} i={0} n={1} />

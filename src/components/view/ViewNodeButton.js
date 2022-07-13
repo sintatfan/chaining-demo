@@ -1,5 +1,5 @@
 import {Eye, GitFork, Heart, User} from "tabler-icons-react";
-import {AspectRatio, Box, Button, Grid, Group, MantineProvider, Modal, Skeleton, Text} from "@mantine/core";
+import {AspectRatio, Button, Grid, Group, MantineProvider, Modal, Text} from "@mantine/core";
 import {useState} from "react";
 import {lightTheme, themeStyles} from "../../theme";
 import {CommentSection} from "./Comment";

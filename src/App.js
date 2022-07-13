@@ -1,5 +1,5 @@
 import './App.css';
-import { Outlet } from "react-router-dom";
+import {Outlet} from "react-router-dom";
 import {AppShell, Global, MantineProvider} from '@mantine/core';
 import {appStyles, globalStyles, theme, themeStyles} from "./theme";
 import AppHeader from "./components/layout/Header";

@@ -4,18 +4,14 @@ import {Group, Text, UnstyledButton} from "@mantine/core";
 import {Refresh, User} from "tabler-icons-react";
 import {MetaDateTime} from "../view/DateTime";
 import {WorkPreview} from "../view/ViewNodeButton";
-import {ProjectContext, ProjectNodesContext} from "./ProjectDataWrapper";
+import {openPreview, ProjectContext, ProjectNodesContext} from "./ProjectDataWrapper";
 import {sample} from "lodash";
 
 function RandomNodeCard({node, onRefresh}) {
-    const openPreview = function() {
-        console.log('openPreview');
-    };
-
     return (
         <div className="node-random-card">
             <UnstyledButton onClick={() => onRefresh()}>Random <Refresh size={16} /></UnstyledButton>
-            <div className="work-preview-wrapper" onClick={() => openPreview()}>
+            <div className="work-preview-wrapper" onClick={() => openPreview(node.id)}>
                 <WorkPreview videoUrl={node.cover_url} key={node.cover_url} />
             </div>
             <Group position="apart" mt="sm" pr="xs">

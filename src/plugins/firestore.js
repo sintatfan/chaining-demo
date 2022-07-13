@@ -57,5 +57,8 @@ export async function getNodes(projectId) {
 export async function getNode(projectId, nodeId) {
     const docRef = doc(db, 'projects', projectId, 'nodes', nodeId);
     const docSnap = await getDoc(docRef);
-    return docSnap.exists() ? docSnap.data() : null;
+    const data = docSnap.data();
+    data.id = docSnap.id;
+
+    return docSnap.exists() ? data : null;
 }

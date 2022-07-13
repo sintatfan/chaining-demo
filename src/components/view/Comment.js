@@ -5,7 +5,7 @@ import {MetaDateTime} from "./DateTime";
 function CommentForm() {
     return (
         <form>
-            <Textarea variant="filled" minRows={5} placeholder="Leave your comment"></Textarea>
+            <Textarea variant="filled" minRows={4} placeholder="Leave your comment"></Textarea>
             <Group position="right" mt="xs" mb="md">
                 <Button size="xs">Comment</Button>
             </Group>
@@ -27,9 +27,9 @@ function CommentEntry({comment}) {
 
 function CommentList() {
     const children = [
-        {id: '3', content: 'Vivamus maximus justo in lacus sollicitudin suscipit sit amet vitae est.', author_name: 'Peter', post_time: new Date()},
-        {id: '2', content: 'Vivamus maximus justo in lacus sollicitudin suscipit sit amet vitae est.', author_name: 'Peter', post_time: new Date(2022, 6, 11, 4, 2, 3)},
-        {id: '1', content: 'Vivamus maximus justo in lacus sollicitudin suscipit sit amet vitae est.', author_name: 'Peter', post_time: new Date(2022, 6, 11, 1, 2, 3)},
+        {id: '3', content: 'Your code is very clear. It\'s easy for me to learn! 🥳', author_name: 'ChiChi', post_time: new Date()},
+        {id: '2', content: 'Awesome work! 😍', author_name: 'Ben', post_time: new Date(2022, 6, 11, 4, 2, 3)},
+        {id: '1', content: 'It\'s out of my imagination!! 🤩', author_name: 'Casper', post_time: new Date(2022, 6, 11, 1, 2, 3)},
     ].map((item) => (<CommentEntry comment={item} key={item.id} />));
 
     return (

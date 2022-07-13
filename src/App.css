@@ -168,11 +168,11 @@
   height: 100%;
   overflow: hidden;
   border-radius: 50%;
-  transition: border-radius 0.4s;
+  transition: transform 0.4s;
 }
 
 .node-video-wrapper:hover {
-  border-radius: 0;
+  transform: scale(0.9);
 }
 
 .quickview__preview {

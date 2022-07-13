@@ -53,7 +53,7 @@ function TreeNode({node, i, n = 0}) {
         <g transform={`translate(${x} ${y})`}>
             {children}
             {node.parent ? <path className="link" d={`M${-x},${-y}C${-x/2},${-y},${-x/2},0,0,0`}></path> : <></>}
-            <circle cx={0} cy={0} r={node.view_count}></circle>
+            {/*<circle cx={0} cy={0} r={node.view_count}></circle>*/}
             <foreignObject x={-dim/2} y={-dim/2}
                            width={dim}
                            height={dim}>

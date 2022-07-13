@@ -24,8 +24,8 @@ export async function getProjectMeta(projectId) {
  * @returns {Promise<*[]>}
  */
 export async function getNodes(projectId) {
-    const collectioRef = collection(db, 'projects', projectId, 'nodes');
-    const querySnapshot = await getDocs(collectioRef);
+    const collectionRef = collection(db, 'projects', projectId, 'nodes');
+    const querySnapshot = await getDocs(collectionRef);
 
     const nodes = [];
     querySnapshot.forEach((doc) => {

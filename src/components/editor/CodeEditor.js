@@ -1,11 +1,12 @@
 import Editor, {useMonaco} from "@monaco-editor/react";
 import raw from "raw.macro";
-import {useCallback, useEffect, useRef, useState} from "react";
+import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import {Box, Button, Card, Group, Switch} from "@mantine/core";
 import {PlayerPlay} from "tabler-icons-react";
 import {insertTextAtPos, MonacoDragNDropProvider} from "./MonacoDragAndDropProvider";
 import Emitter from "../../emitter";
 import debounce from 'lodash/debounce';
+import {NodeContext} from "../project/ProjectDataWrapper";
 
 const onDrop = function(e, target, instance) {
     const text = e.dataTransfer.getData('text');
@@ -65,8 +66,10 @@ function runCode(code) {
 }
 
 export function EditorCard() {
+    const node = useContext(NodeContext);
+
     const [autoRefresh, setAutoRefresh] = useState(false);
-    const [code, setCode] = useState(defaultContent);
+    const [code, setCode] = useState(node.content);
 
     // Handle code change event of the code editor
     const onCodeChange = function (v) {

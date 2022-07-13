@@ -1,4 +1,3 @@
-import {useParams} from "react-router-dom";
 import {NodeDetailsModal} from "./ViewNodeButton";
 import {useEffect, useState} from "react";
 import Emitter from "../../emitter";

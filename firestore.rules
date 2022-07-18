@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /projects/{projectId} {
+    	function isUser() {
+      	return request.auth != null;
+      }
+    
+      allow read;
+      
+      match /nodes/{nodeId} {
+        allow read;
+        
+        match /comments/{commentId} {
+        	allow read;
+        	allow create: if isUser();
+        }
+      }
+    }
+  }
+}

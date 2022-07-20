@@ -2,6 +2,12 @@ import previewEllipse from '../../images/keyword_preview/preview_ellipse.svg';
 import previewRect from '../../images/keyword_preview/preview_rect.svg';
 import previewTriangle from '../../images/keyword_preview/preview_triangle.svg';
 import previewLine from '../../images/keyword_preview/preview_line.svg';
+import previewFill from '../../images/keyword_preview/preview_fill.svg';
+import previewStroke from '../../images/keyword_preview/preview_stroke.svg';
+import previewStrokeWeight from '../../images/keyword_preview/preview_stroke_weight.svg';
+import previewRotate from '../../images/keyword_preview/preview_rotate.svg';
+import previewScale from '../../images/keyword_preview/preview_scale.svg';
+import previewTranslate from '../../images/keyword_preview/preview_translate.svg';
 
 export const references = [
     {
@@ -16,17 +22,17 @@ export const references = [
     {
         label: 'Color',
         items: [
-            { label: 'fill()', image: 'https://via.placeholder.com/160x90', code: 'fill(4,116,121);' },
-            { label: 'stroke()', image: 'https://via.placeholder.com/160x90', code: 'stroke(0,0,0);' },
-            { label: 'strokeWeight()', image: 'https://via.placeholder.com/160x90', code: 'strokeWeight(3);' },
+            { label: 'fill()', image: previewFill, code: 'fill(4,116,121);' },
+            { label: 'stroke()', image: previewStroke, code: 'stroke(0,0,0);' },
+            { label: 'strokeWeight()', image: previewStrokeWeight, code: 'strokeWeight(3);' },
         ]
     },
     {
         label: 'Transform',
         items: [
-            {label: 'rotate()', image: 'https://via.placeholder.com/160x90', code: 'rotate(45);' },
-            {label: 'scale()', image: 'https://via.placeholder.com/160x90', code: 'scale(2);' },
-            {label: 'translate()', image: 'https://via.placeholder.com/160x90', code: 'translate(20, 20);' },
+            {label: 'rotate()', image: previewRotate, code: 'rotate(45);' },
+            {label: 'scale()', image: previewScale, code: 'scale(2);' },
+            {label: 'translate()', image: previewTranslate, code: 'translate(20, 20);' },
         ],
     }
 ];

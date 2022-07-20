@@ -44,7 +44,15 @@ function TreeNode({node, i, n = 0, collapsible = false, visible = true}) {
     const [shownChildren, setShownChildren] = useState(collapsible ? 0 : chCount);
 
     const children = node.children
-        ? node.children.map((subnode, i) => <TreeNode key={subnode.id} node={subnode} i={i} n={chCount} collapsible={collapsible} visible={!collapsible || (i+1) <= shownChildren} />)
+        ? node.children.map((subnode, i) => (
+            <TreeNode
+                key={subnode.id}
+                node={subnode}
+                i={i} n={chCount}
+                collapsible={collapsible}
+                visible={!collapsible || (i+1) <= shownChildren}
+            />
+        ))
         : <></>;
 
     const x = 320 + node.dx;
@@ -54,7 +62,10 @@ function TreeNode({node, i, n = 0, collapsible = false, visible = true}) {
 
     const {projectId} = useParams();
     const nodeClickHandler = collapsible
-        ? () => {setShownChildren(shownChildren+1)}
+        ? (e) => {
+            if (e.metaKey) openPreview(projectId, node.id);
+            else setShownChildren(shownChildren+1);
+        }
         : () => openPreview(projectId, node.id);
 
     return (

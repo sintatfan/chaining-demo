@@ -59,7 +59,7 @@ function TreeNode({node, i, n = 0, collapsible = false, visible = true}) {
 
     return (
         <g transform={`translate(${x} ${y})`}>
-            <g opacity={visible ? 1 : 0}>
+            <g className={visible ? 'node-group' : 'node-group node-group--hidden'}>
                 {children}
                 {node.parent ? <path className="link" d={`M${-x},${-y}C${-x/2},${-y},${-x/2},0,0,0`}></path> : <></>}
                 {/*<circle cx={0} cy={0} r={node.view_count}></circle>*/}

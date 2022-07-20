@@ -184,3 +184,19 @@
   max-width: 600px;
   margin: auto;
 }
+
+.node-group {
+  transition: opacity 0.4s, transform 0.4s;
+}
+.node-group path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.5s;
+}
+.node-group--hidden {
+  transform: scale(0.7) translateX(-100px);
+  opacity: 0;
+}
+.node-group--hidden path {
+  stroke-dashoffset: 500;
+}

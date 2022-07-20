@@ -19,6 +19,7 @@ root.render(
               <Route path="/" element={<App />}>
                   <Route index element={<HomePage />} />
                   <Route path="project/:projectId" element={<ProjectHomePage />} />
+                  <Route path="project/:projectId/timeline" element={<ProjectHomePage />} />
                   <Route path="project/:projectId/:nodeId" element={<EditorPage />} />
                   {/*<Route path="import-data" element={<ImportDataTool />} />*/}
                   <Route path="*" element={<NotFound />} />
